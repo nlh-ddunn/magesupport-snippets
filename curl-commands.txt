@@ -1,0 +1,15 @@
+Curl commands
+-----
+
+Helpful Notes:
+
+If you're testing on a .cloud address (or one that has an invalid/expired SSL cert) you can add the "-k" argument to ignore these
+
+Check Fastly Headers
+---
+curl -I -H "Fastly-Debug:1" http(s)://site.url
+
+Follow a redirect
+---
+curl -IL http(s)://site.url
+

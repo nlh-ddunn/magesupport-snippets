@@ -1,0 +1,11 @@
+Handy Snippets
+-----
+
+magento-cloud bot --party --parrot
+
+
+View Routes
+---
+magento-cloud --project=PROJECTID --environment=staging repo:cat .magento/routes.yaml
+
+

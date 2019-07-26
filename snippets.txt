@@ -1,11 +1,27 @@
 Handy Snippets
 -----
 
+Fun
+---
+WHO WANTS TO PARTY?!?!
 magento-cloud bot --party --parrot
 
 
+Project "hidden" files
+-----
+
 View Routes
 ---
-magento-cloud --project=PROJECTID --environment=staging repo:cat .magento/routes.yaml
+magento-cloud --project=PROJECTID --environment=BRANCH repo:cat .magento/routes.yaml|less
+
+View services.yaml
+magento-cloud --project=PROJECTID --environment=BRANCH repo:cat .magento/services.yaml|less
+
+Access log fun
+-----
+
+Get last 30 days (assuming you are in the same directory as the access logs)
+---
+for i in {1..30};do zcat access.log.$i.gz|head -n1|awk '{print $4}'|awk -F ':' '{print $1}'|awk -F 'T' '{print $1}'|sed 's!\[!!g'|tr '\n' ' ';zcat access.log.$i.gz|wc -l;done
 
 

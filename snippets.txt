@@ -17,11 +17,38 @@ magento-cloud --project=PROJECTID --environment=BRANCH repo:cat .magento/routes.
 View services.yaml
 magento-cloud --project=PROJECTID --environment=BRANCH repo:cat .magento/services.yaml|less
 
+
+
 Access log fun
 -----
 
 Get last 30 days (assuming you are in the same directory as the access logs)
 ---
 for i in {1..30};do zcat access.log.$i.gz|head -n1|awk '{print $4}'|awk -F ':' '{print $1}'|awk -F 'T' '{print $1}'|sed 's!\[!!g'|tr '\n' ' ';zcat access.log.$i.gz|wc -l;done
+
+
+Get total requsts to node/server
+---
+wc -l
+
+
+Get the top 10 IP addresses (sorted most to least)
+---
+cat access.log|awk '{print $1}'|sort|uniq -c|sort -rnk1|head
+
+
+Get the response codes (sorted most to least)
+---
+cat access.log|awk '{print $8}'|sort|uniq -c|sort -rnk1
+
+
+Get the requests per hour
+---
+cat access.log|awk '{print $4}'|sed 's!T!:!g'|awk -F ':' '{print $2 ":00-59"}'|sort|uniq -c
+
+
+Check accesses by IP over period of time
+---
+grep 127.0.0.1 access.log|awk '{print $4}'|sed 's!T!:!g'|awk -F ':' '{print $2 ":00-59"}'|sort|uniq -c
 
 

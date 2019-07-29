@@ -1,0 +1,4 @@
+Handy Magento bin commands
+-----
+
+

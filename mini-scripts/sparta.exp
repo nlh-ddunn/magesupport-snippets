@@ -1,0 +1,5 @@
+#!/usr/bin/expect -f
+spawn ssh -vvv web2.sparta.corp.magento.com -l USERNAME -i ~/.ssh/SSH.key
+expect "password:"
+send "YOURPASSWORDGOESHERE\r"
+interact

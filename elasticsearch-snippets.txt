@@ -1,0 +1,12 @@
+Elasticsearch snippets
+-----
+There's a lot of assumptions here, in that this is on the port 9200 which is used a lot on magento cloud.
+
+Get version
+---
+
+curl -XGET http://127.0.0.1:9200/
+
+List indices
+---
+curl -XGET http://127.0.0.1:9200/_cat/indices?v

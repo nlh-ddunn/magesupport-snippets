@@ -5,3 +5,9 @@ Get magento-managed crons (a list)
 ---
 select job_code from cron_schedule GROUP BY job_code;
 
+
+Find all running cron jobs
+---
+SELECT * FROM cron_schedule WHERE status = 'running';
+
+

@@ -13,3 +13,10 @@ Follow a redirect
 ---
 curl -IL http(s)://site.url
 
+Calculate ttfb (can be written as a .sh script)
+---
+curl -o /dev/null \
+     -H 'Cache-Control: no-cache' \
+     -s \
+     -k \
+     -w "Connect: %{time_connect} TTFB: %{time_starttransfer} Total time: %{time_total} \n" http://google.com
